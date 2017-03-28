@@ -75,4 +75,9 @@ if (a == 1) {
 } 
 else {
   console.log('Вы проиграли!');
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> origin/master
