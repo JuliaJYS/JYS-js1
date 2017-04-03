@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> Image Gallery </title>
+    <style type="text/css">
+        #big_picture {
+            height: 300px;
+            background-color: grey;
+        }
+        #big_picture img{
+            weight: 300px;
+            height: 300px;
+        }
+
+        #gallery img{
+            height: 100px;
+            weight: 100px;
+        }
+
+        .body__container{
+            display: inline-flex;
+            width: 100%;
+        }
+        .body__container-shop {
+            margin: 15px;
+            border: 2px solid rgba(225, 225, 225, 0.7);
+            border-radius: 10px;
+            width: 25%;
+            text-align: center;
+        }
+    </style> 
+    <script>
+        function changeBigPic(event) {
+            //console.log('Картинка нажата');
+            var div = document.getElementById('big_picture');
+            div.innerHTML = '';
+            var targetElement = event.target;
+            var newImg = new Image();
+            if (targetElement.src == '') {
+                newImg.innerHTML = 'Картинка не найдена!';
+            }
+            newImg.src = targetElement.src;
+
+            div.appendChild(newImg);
+        }
+
+
+        function addToCart(event) {
+            console.log('Кнопка купить нажата');
+            // var div = document.getElementByClassName('big_cart');
+            // div.innerHTML = '';
+            // var targetElement = event.target;
+            // var newGood = new Image();
+            // if (targetElement.src == '') {
+            //     newImg.innerHTML = 'Картинка не найдена!';
+            // }
+            // newImg.src = targetElement.src;
+
+            // div.appendChild(newImg);
+        }
+        
+        window.onload = function() {
+            //Первый вариант
+            // var images = document.querySelectorAll('#gallery > img');
+            // for (var i = 0; i < images.length; i++) {
+            //     images[i].onclick = changeBigPic;
+            // }
+            //Более быстрый вариант
+            var gallery = document.getElementById('gallery');
+            gallery.addEventListener('click', changeBigPic);
+
+            var buttom = document.getElementByClassName('body__form');
+            buttom.addEventListener('click', addToCart);            
+        }        
+
+    </script>
+</head>
+<body>
+    <div id="big_picture"></div>
+    <div id="gallery">
+        <img id="image_1" src="http://classpic.ru/wp-content/uploads/kotik-chitaet-knigu.jpg">
+        <img id="image_2" src="http://www.radionetplus.ru/uploads/posts/2015-08/1439143962_9-www.radionetplus.ru.jpg">
+        <img id="image_3" src="http://www.niceimage.ru/pic/201305/960x800/niceimage.ru-39406.jpg">
+        <img id="image_4" src="">
+    </div>
+
+    <h1 class="body__h1">Каталог товаров</h1>    
+    <script>
+        //ДЗ 2. Создаем товары
+        var divContainer = document.createElement('div');
+        divContainer.className = 'body__container';        
+        document.body.appendChild(divContainer);
+        for (var i = 0; i < 4; i++) {
+            var divGood = document.createElement('div');
+            divGood.className = 'body__container-shop';
+            divGood.innerHTML = 'Товар ' + (i+1);
+            divContainer.appendChild(divGood);
+
+            var divPrice = document.createElement('div');
+            divPrice.className = 'body__price';
+            divPrice.innerHTML = 'Цена: '+(10+100*i);
+            divGood.appendChild(divPrice);
+
+            var form = document.createElement('form');
+            form.className = 'body__form';
+            form.innerHTML = '<input type="button" value="Купить" class="body__form-buttom">';
+            divGood.appendChild(form);  
+        }
+
+        function addToCart(event) {
+            console.log('Кнопка купить нажата');
+            // var div = document.getElementByClassName('big_cart');
+            // div.innerHTML = '';
+            // var targetElement = event.target;
+            // var newGood = new Image();
+            // if (targetElement.src == '') {
+            //     newImg.innerHTML = 'Картинка не найдена!';
+            // }
+            // newImg.src = targetElement.src;
+
+            // div.appendChild(newImg);
+        }
+
+        window.onload = function() {
+            var buttomOne = document.getElementsByClassName('body__form');
+            buttomOne[0].addEventListener('click', addToCart);            
+        }    
+
+    </script>
+</body>
+</html>
