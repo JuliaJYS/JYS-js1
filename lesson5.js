@@ -32,7 +32,7 @@ function figureName(i,j){
 
 
 for (var i = 8; i >= 0; i--){
-    tableNew.appendChild(newTr=document.createElement('tr'));
+    tableNew.appendChild(var newTr=document.createElement('tr'));
     if (i > 0) {
         newTr.innerHTML = i;
     }
@@ -40,7 +40,7 @@ for (var i = 8; i >= 0; i--){
         newTr.innerHTML = 'Game';
     }   
     for (var j = 0; j <= arrayABC.length - 1; j++) {                        
-        newTr.appendChild(newTd=document.createElement('td'));
+        newTr.appendChild(var newTd=document.createElement('td'));
             if (i == 0) {
                 newTd.innerText = arrayABC[j];
             }
